@@ -40,14 +40,14 @@ export function TaskItem({ task, showActions = true, className }: TaskItemProps)
 
   return (
     <div className={cn(
-      "group flex items-center gap-3 p-4 bg-card rounded-lg border border-border transition-all duration-200 hover:shadow-card hover:border-primary/20",
+      "group flex items-center gap-3 p-3 md:p-4 bg-card rounded-lg border border-border transition-all duration-200 hover:shadow-card hover:border-primary/20",
       task.completed && "opacity-60 bg-success-light border-success/20",
       className
     )}>
       <Checkbox
         checked={task.completed}
         onCheckedChange={() => toggleTask(task.id)}
-        className="flex-shrink-0 data-[state=checked]:bg-success data-[state=checked]:border-success"
+        className="flex-shrink-0 w-5 h-5 md:w-4 md:h-4 data-[state=checked]:bg-success data-[state=checked]:border-success"
       />
       
       <div className="flex-1 min-w-0">
@@ -78,14 +78,14 @@ export function TaskItem({ task, showActions = true, className }: TaskItemProps)
       </div>
 
       {showActions && !task.completed && (
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
           {isEditing ? (
             <>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={handleSaveEdit}
-                className="h-8 w-8 p-0 text-success hover:bg-success/10"
+                className="h-9 w-9 md:h-8 md:w-8 p-0 text-success hover:bg-success/10"
               >
                 <Check className="h-4 w-4" />
               </Button>
@@ -93,7 +93,7 @@ export function TaskItem({ task, showActions = true, className }: TaskItemProps)
                 size="sm"
                 variant="ghost"
                 onClick={handleCancelEdit}
-                className="h-8 w-8 p-0 text-muted-foreground hover:bg-muted"
+                className="h-9 w-9 md:h-8 md:w-8 p-0 text-muted-foreground hover:bg-muted"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -104,7 +104,7 @@ export function TaskItem({ task, showActions = true, className }: TaskItemProps)
                 size="sm"
                 variant="ghost"
                 onClick={() => setIsEditing(true)}
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-muted"
+                className="h-9 w-9 md:h-8 md:w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-muted"
               >
                 <Edit2 className="h-4 w-4" />
               </Button>
@@ -112,7 +112,7 @@ export function TaskItem({ task, showActions = true, className }: TaskItemProps)
                 size="sm"
                 variant="ghost"
                 onClick={() => deleteTask(task.id)}
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                className="h-9 w-9 md:h-8 md:w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
               >
                 <Trash2 className="h-4 w-4" />
               </Button>

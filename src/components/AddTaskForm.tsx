@@ -53,7 +53,7 @@ export function AddTaskForm({ onCancel, className }: AddTaskFormProps) {
           onKeyDown={handleKeyPress}
           placeholder={canAddTask ? "Что нужно сделать?" : `Достигнут лимит (${state.dailyLimit} задач)`}
           disabled={!canAddTask}
-          className="transition-all duration-200 focus:border-primary focus:shadow-soft"
+          className="transition-all duration-200 focus:border-primary focus:shadow-soft h-12 md:h-10 text-base md:text-sm"
           autoFocus
         />
         
@@ -63,50 +63,53 @@ export function AddTaskForm({ onCancel, className }: AddTaskFormProps) {
             onChange={(e) => setDescription(e.target.value)}
             onKeyDown={handleKeyPress}
             placeholder="Описание (необязательно)"
-            className="min-h-20 transition-all duration-200 focus:border-primary animate-slide-down"
+            className="min-h-20 transition-all duration-200 focus:border-primary animate-slide-down text-base md:text-sm"
             disabled={!canAddTask}
           />
         )}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
         <Button
           type="submit"
           size="sm"
           disabled={!title.trim() || !canAddTask}
-          className="flex-shrink-0"
+          className="flex-shrink-0 h-12 sm:h-9 text-base sm:text-sm"
         >
           <Plus className="h-4 w-4" />
           Добавить
         </Button>
         
-        {!isExpanded && (
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            onClick={() => setIsExpanded(true)}
-            disabled={!canAddTask}
-          >
-            Добавить описание
-          </Button>
-        )}
-        
-        {onCancel && (
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={handleCancel}
-            className="flex-shrink-0"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        )}
+        <div className="flex gap-2">
+          {!isExpanded && (
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setIsExpanded(true)}
+              disabled={!canAddTask}
+              className="flex-1 sm:flex-initial h-12 sm:h-9 text-base sm:text-sm"
+            >
+              Добавить описание
+            </Button>
+          )}
+          
+          {onCancel && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={handleCancel}
+              className="flex-shrink-0 h-12 sm:h-9 w-12 sm:w-9 p-0"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </div>
 
       {!canAddTask && (
-        <p className="text-xs text-warning animate-slide-down">
+        <p className="text-xs text-warning animate-slide-down px-2">
           Достигнут дневной лимит задач. Завершите существующие задачи или увеличьте лимит в настройках.
         </p>
       )}

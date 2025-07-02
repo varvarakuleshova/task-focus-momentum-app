@@ -29,16 +29,16 @@ export function ArchiveView() {
   }).length;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Header */}
-      <div className="text-center space-y-4">
-        <h1 className="text-3xl font-bold text-foreground">Архив</h1>
-        <p className="text-muted-foreground">
+      <div className="text-center space-y-3 md:space-y-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Архив</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
           История выполненных задач
         </p>
 
         {/* Stats */}
-        <div className="flex justify-center gap-6 text-sm">
+        <div className="flex justify-center gap-4 md:gap-6 text-sm">
           <div className="text-center">
             <div className="text-2xl font-bold text-success">{completedTasks.length}</div>
             <div className="text-muted-foreground">Всего</div>

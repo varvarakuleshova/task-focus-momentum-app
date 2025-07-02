@@ -135,5 +135,37 @@ All colors MUST be HSL for consistency
 
   body {
     @apply bg-background text-foreground;
+    /* Prevent zoom on mobile inputs */
+    font-size: 16px;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    input, textarea, select {
+      font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Touch-friendly scrolling */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
   }
 }

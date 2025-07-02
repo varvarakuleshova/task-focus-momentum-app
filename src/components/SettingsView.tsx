@@ -55,14 +55,14 @@ export function SettingsView() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Настройки</h1>
-        <p className="text-muted-foreground">Персонализируйте своё приложение</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Настройки</h1>
+        <p className="text-sm md:text-base text-muted-foreground">Персонализируйте своё приложение</p>
       </div>
 
-      <div className="max-w-2xl mx-auto space-y-4">
+      <div className="max-w-2xl mx-auto space-y-3 md:space-y-4">
         {/* Daily Limit Settings */}
         <Card>
           <CardHeader>

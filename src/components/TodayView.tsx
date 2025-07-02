@@ -16,14 +16,14 @@ export function TodayView() {
   const progress = todayTasks.length > 0 ? (completedTasks.length / todayTasks.length) * 100 : 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Header */}
-      <div className="text-center space-y-4">
+      <div className="text-center space-y-3 md:space-y-4">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             Сегодня
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-sm md:text-base text-muted-foreground">
             {new Date().toLocaleDateString('ru-RU', { 
               weekday: 'long', 
               year: 'numeric', 
@@ -34,7 +34,7 @@ export function TodayView() {
         </div>
 
         {/* Progress */}
-        <div className="max-w-md mx-auto space-y-2">
+        <div className="max-w-xs md:max-w-md mx-auto space-y-2">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">Прогресс</span>
             <span className="font-medium">
@@ -42,14 +42,14 @@ export function TodayView() {
             </span>
           </div>
           <Progress value={progress} className="h-2" />
-          <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center justify-center gap-3 md:gap-4 text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
               <Target className="h-3 w-3" />
-              Лимит: {state.dailyLimit}
+              <span className="hidden sm:inline">Лимит:</span> {state.dailyLimit}
             </div>
             <div className="flex items-center gap-1">
               <CheckCircle2 className="h-3 w-3" />
-              Выполнено: {completedTasks.length}
+              <span className="hidden sm:inline">Выполнено:</span> {completedTasks.length}
             </div>
           </div>
         </div>

@@ -18,32 +18,32 @@ export function BacklogView() {
   const canMoveToToday = todayTasks.length < state.dailyLimit;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Header */}
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Бэклог</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Бэклог</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
           Отложенные и просроченные задачи ({backlogTasks.length})
         </p>
       </div>
 
       {/* Backlog Tasks */}
-      <div className="space-y-4">
+      <div className="space-y-3 md:space-y-4">
         {backlogTasks.length > 0 ? (
           <div className="space-y-2">
             {backlogTasks.map((task, index) => (
               <div key={task.id} className="group relative">
                 <TaskItem 
                   task={task}
-                  className="animate-slide-down pr-20"
+                  className="animate-slide-down pr-12 md:pr-20"
                 />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <Button
                     size="sm"
                     variant="ghost"
                     onClick={() => moveToToday(task.id)}
                     disabled={!canMoveToToday}
-                    className="text-primary hover:bg-primary/10"
+                    className="h-9 w-9 md:h-8 md:w-8 p-0 text-primary hover:bg-primary/10"
                     title={canMoveToToday ? "Перенести на сегодня" : "Достигнут лимит задач на сегодня"}
                   >
                     <ArrowRight className="h-4 w-4" />

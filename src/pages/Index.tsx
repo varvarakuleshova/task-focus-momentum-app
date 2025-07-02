@@ -26,27 +26,32 @@ const Index = () => {
 
   return (
     <TaskProvider>
-      <div className="min-h-screen bg-gradient-subtle">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="min-h-screen bg-gradient-subtle pb-20 md:pb-0">
+        <div className="container mx-auto px-4 py-6 md:py-8 max-w-4xl">
           {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
               Totitodo
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-sm md:text-base text-muted-foreground px-4">
               Фокусируйтесь на главном. Делайте меньше, достигайте больше.
             </p>
           </div>
 
-          {/* Navigation */}
-          <div className="mb-8">
+          {/* Navigation - Desktop */}
+          <div className="mb-6 md:mb-8 hidden md:block">
             <Navigation currentView={currentView} onViewChange={setCurrentView} />
           </div>
 
           {/* Main Content */}
-          <main className="animate-slide-down">
+          <main className="animate-slide-down px-2 md:px-0">
             {renderView()}
           </main>
+
+          {/* Navigation - Mobile (Fixed Bottom) */}
+          <div className="md:hidden">
+            <Navigation currentView={currentView} onViewChange={setCurrentView} />
+          </div>
         </div>
       </div>
     </TaskProvider>
