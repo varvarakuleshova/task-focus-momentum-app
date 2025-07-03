@@ -33,9 +33,6 @@ const Index = () => {
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
               Totitodo
             </h1>
-            <p className="text-sm md:text-base text-muted-foreground px-4">
-              Фокусируйтесь на главном. Делайте меньше, достигайте больше.
-            </p>
           </div>
 
           {/* Navigation - Desktop */}

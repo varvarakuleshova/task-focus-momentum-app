@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useTaskContext } from '@/contexts/TaskContext';
 import { TaskItem } from './TaskItem';
 import { Input } from '@/components/ui/input';
-import { CheckCircle2, Search, Trophy } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { CheckCircle2, Search, Trophy, BarChart3 } from 'lucide-react';
 
 export function ArchiveView() {
   const { getCompletedTasks } = useTaskContext();
   const [searchQuery, setSearchQuery] = useState('');
+  const [showStats, setShowStats] = useState(false);
   const completedTasks = getCompletedTasks();
   
   const filteredTasks = completedTasks.filter(task =>
@@ -37,21 +39,36 @@ export function ArchiveView() {
           История выполненных задач
         </p>
 
-        {/* Stats */}
-        <div className="flex justify-center gap-4 md:gap-6 text-sm">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-success">{completedTasks.length}</div>
-            <div className="text-muted-foreground">Всего</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary">{tasksThisWeek}</div>
-            <div className="text-muted-foreground">За неделю</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-accent">{tasksThisMonth}</div>
-            <div className="text-muted-foreground">За месяц</div>
-          </div>
+        {/* Stats Toggle Button */}
+        <div className="flex justify-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowStats(!showStats)}
+            className="text-xs text-muted-foreground/50 hover:text-muted-foreground px-2 py-1 h-auto"
+          >
+            <BarChart3 className="h-3 w-3 mr-1" />
+            статистика
+          </Button>
         </div>
+
+        {/* Stats */}
+        {showStats && (
+          <div className="flex justify-center gap-4 md:gap-6 text-sm animate-fade-in">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-success">{completedTasks.length}</div>
+              <div className="text-muted-foreground">Всего</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-primary">{tasksThisWeek}</div>
+              <div className="text-muted-foreground">За неделю</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-accent">{tasksThisMonth}</div>
+              <div className="text-muted-foreground">За месяц</div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Search */}

@@ -116,32 +116,6 @@ export function SettingsView() {
           </CardContent>
         </Card>
 
-        {/* Stats */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Статистика</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-success">{state.stats.totalCompleted}</div>
-                <div className="text-sm text-muted-foreground">Всего выполнено</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{state.stats.completedToday}</div>
-                <div className="text-sm text-muted-foreground">Сегодня</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-warning">{state.stats.inBacklog}</div>
-                <div className="text-sm text-muted-foreground">В бэклоге</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-accent">{state.tasks.length}</div>
-                <div className="text-sm text-muted-foreground">Всего задач</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Data Management */}
         <Card>

@@ -33,25 +33,11 @@ export function TodayView() {
           </p>
         </div>
 
-        {/* Progress */}
-        <div className="max-w-xs md:max-w-md mx-auto space-y-2">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-muted-foreground">Прогресс</span>
-            <span className="font-medium">
-              {completedTasks.length} / {state.dailyLimit}
-            </span>
-          </div>
-          <Progress value={progress} className="h-2" />
-          <div className="flex items-center justify-center gap-3 md:gap-4 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Target className="h-3 w-3" />
-              <span className="hidden sm:inline">Лимит:</span> {state.dailyLimit}
-            </div>
-            <div className="flex items-center gap-1">
-              <CheckCircle2 className="h-3 w-3" />
-              <span className="hidden sm:inline">Выполнено:</span> {completedTasks.length}
-            </div>
-          </div>
+        {/* Counter */}
+        <div className="text-center">
+          <span className="text-lg font-medium text-muted-foreground">
+            {completedTasks.length} / {state.dailyLimit}
+          </span>
         </div>
       </div>
 
@@ -117,20 +103,6 @@ export function TodayView() {
           </div>
         )}
 
-        {/* Empty State */}
-        {todayTasks.length === 0 && (
-          <div className="text-center py-12 space-y-4">
-            <div className="w-16 h-16 mx-auto bg-gradient-primary rounded-full flex items-center justify-center">
-              <Target className="h-8 w-8 text-white" />
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-lg font-semibold">Никаких задач</h3>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Отлично! У вас пока нет задач на сегодня. Добавьте новую задачу, чтобы начать работу.
-              </p>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Daily Limit Warning */}
